@@ -1,5 +1,8 @@
 package com.mediscreen.notes.DTO;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
+
 import java.time.LocalDate;
 
 public class NotesDTO {
@@ -8,7 +11,9 @@ public class NotesDTO {
     private String id;
     private Integer patientId;
     private String practicionerNotes;
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dateCreation;
+    @JsonSerialize(using = LocalDateSerializer.class)
     private LocalDate dateModification;
 
     public NotesDTO() {

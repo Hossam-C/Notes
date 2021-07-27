@@ -16,5 +16,5 @@ public interface NotesService {
 
     public NotesDTO updateNotes(NotesDTO notesDTO);
 
-    public void deleteNotes(String id);
+    public NotesDTO deleteNotes(String id);
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -109,8 +110,14 @@ public class NotesServiceImpl implements NotesService {
     }
 
     @Override
-    public void deleteNotes(String id) {
+    public NotesDTO deleteNotes(String id) {
+
+        Optional<Notes> notes = notesRepository.findById(id);
+
+        NotesDTO notesDTO = new NotesDTO(notes.get().getId(),notes.get().getPatientId(),notes.get().getPracticionerNotes(),notes.get().getDateCreation(),notes.get().getDateModification());
 
         notesRepository.deleteById(id);
+
+        return notesDTO;
     }
 }
