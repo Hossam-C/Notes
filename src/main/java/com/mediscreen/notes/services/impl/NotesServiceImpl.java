@@ -8,6 +8,7 @@ import com.mediscreen.notes.services.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,6 +37,8 @@ public class NotesServiceImpl implements NotesService {
         notesDTO.setId(notes.getId());
         notesDTO.setPatientId(notes.getPatientId());
         notesDTO.setPracticionerNotes(notes.getPracticionerNotes());
+        notesDTO.setDateCreation(notes.getDateCreation());
+        notesDTO.setDateModification(notes.getDateModification());
 
         return notesDTO;
 
@@ -53,6 +56,8 @@ public class NotesServiceImpl implements NotesService {
             notesDTO.setId(notesL.getId());
             notesDTO.setPatientId(notesL.getPatientId());
             notesDTO.setPracticionerNotes(notesL.getPracticionerNotes());
+            notesDTO.setDateCreation(notesL.getDateCreation());
+            notesDTO.setDateModification(notesL.getDateModification());
 
             notesDTOList.add(notesDTO);
 
@@ -72,8 +77,14 @@ public class NotesServiceImpl implements NotesService {
         notes.setId(seqValue.toString());
         notes.setPatientId(notesDTO.getPatientId());
         notes.setPracticionerNotes(notesDTO.getPracticionerNotes());
+        notes.setDateCreation(LocalDate.now());
+        notes.setDateModification(LocalDate.now());
 
         notesRepository.save(notes);
+
+        notesDTO.setId(notes.getId());
+        notesDTO.setDateCreation(notes.getDateCreation());
+        notesDTO.setDateModification(notes.getDateModification());
 
         return notesDTO;
     }
@@ -86,8 +97,13 @@ public class NotesServiceImpl implements NotesService {
         notes.setId(notesDTO.getId());
         notes.setPatientId(notesDTO.getPatientId());
         notes.setPracticionerNotes(notesDTO.getPracticionerNotes());
+        notes.setDateCreation(notesDTO.getDateCreation());
+        notes.setDateModification(LocalDate.now());
 
         notesRepository.save(notes);
+
+        notesDTO.setDateCreation(notes.getDateCreation());
+        notesDTO.setDateModification(notes.getDateModification());
 
         return notesDTO;
     }

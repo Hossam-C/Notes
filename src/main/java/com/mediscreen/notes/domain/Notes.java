@@ -5,6 +5,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.persistence.Transient;
+import java.time.LocalDate;
 
 
 @Document(collection = "Notes")
@@ -20,7 +21,19 @@ public class Notes {
 
     private String practicionerNotes;
 
+    private LocalDate dateCreation;
+
+    private LocalDate dateModification;
+
     public Notes() {
+    }
+
+    public Notes(String id, Integer patientId, String practicionerNotes, LocalDate dateCreation, LocalDate dateModification) {
+        this.id = id;
+        this.patientId = patientId;
+        this.practicionerNotes = practicionerNotes;
+        this.dateCreation = dateCreation;
+        this.dateModification = dateModification;
     }
 
     public String getId() {
@@ -45,5 +58,21 @@ public class Notes {
 
     public void setPracticionerNotes(String practicianNotes) {
         this.practicionerNotes = practicianNotes;
+    }
+
+    public LocalDate getDateCreation() {
+        return dateCreation;
+    }
+
+    public void setDateCreation(LocalDate dateCreation) {
+        this.dateCreation = dateCreation;
+    }
+
+    public LocalDate getDateModification() {
+        return dateModification;
+    }
+
+    public void setDateModification(LocalDate dateModification) {
+        this.dateModification = dateModification;
     }
 }
