@@ -14,4 +14,4 @@ Construction de l'image docker , depuis le répertoire du projet:
 > docker build --build -t front .
 
 Lancement des builds docker lorsque toutes les APIs sont buildées:
-> docker-compose up -d![image](https://user-images.githubusercontent.com/61044632/127453746-815fd633-b0ac-44f5-a326-e0a835693f47.png)
+> docker-compose up -d
