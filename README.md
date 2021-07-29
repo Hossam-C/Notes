@@ -11,7 +11,7 @@ La base de donées est une base MongoDB
 
 Construction de l'image docker , depuis le répertoire du projet: 
 
-> docker build --build -t front .
+> docker build --build -t notes .
 
 Lancement des builds docker lorsque toutes les APIs sont buildées:
 > docker-compose up -d
